@@ -7,4 +7,6 @@ export const QUERY_KEYS = {
   search: 'search',
   searchMovies: (params: SearchMoviesParams) =>
     [...QUERY_KEYS.movies, 'search', params] as const,
+  movieLanguages: 'movieLanguages',
+  moviePrimaryTranslations: 'moviePrimaryTranslations',
 } as const;

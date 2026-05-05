@@ -1,4 +1,4 @@
-export type MovieApi = {
+export interface MovieApi {
   adult: boolean;
   backdrop_path: string | null;
   genre_ids: number[];
@@ -13,16 +13,16 @@ export type MovieApi = {
   video: boolean;
   vote_average: number;
   vote_count: number;
-};
+}
 
-export type MoviesSearchResponseApi = {
+export interface MoviesSearchResponseApi {
   page: number;
   results: MovieApi[];
   total_pages: number;
   total_results: number;
-};
+}
 
-export type SearchMoviesParams = {
+export interface SearchMoviesParams {
   query: string;
   includeAdult?: boolean;
   language?: string;
@@ -30,4 +30,10 @@ export type SearchMoviesParams = {
   page?: number;
   region?: string;
   year?: string;
-};
+}
+
+export interface LanguageApi {
+  iso_639_1: string;
+  english_name: string;
+  name: string;
+}

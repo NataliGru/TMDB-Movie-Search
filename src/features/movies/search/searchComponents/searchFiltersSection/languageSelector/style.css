@@ -11,3 +11,10 @@
   outline: none;
   border-color: #764ba2;
 }
+
+.language-selector-message {
+  color: #8a3f12;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin-top: 0.25rem;
+}

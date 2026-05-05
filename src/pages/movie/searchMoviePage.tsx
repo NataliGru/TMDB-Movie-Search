@@ -33,6 +33,8 @@ export const SearchMoviePage = () => {
           </div>
         </div>
 
+        <LanguageSelector />
+
         {/* <!-- Advanced Filters Section --> */}
         <div className='advanced-filters'>
           <button className='filters-toggle' id='filtersToggle'>

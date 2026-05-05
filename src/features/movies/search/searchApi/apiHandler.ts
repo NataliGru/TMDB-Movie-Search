@@ -1,7 +1,11 @@
 import { getData } from '@/api/crudHandlers';
 
 import { apiPath } from './apiPath';
-import type { MoviesSearchResponseApi, SearchMoviesParams } from './types';
+import type {
+  LanguageApi,
+  MoviesSearchResponseApi,
+  SearchMoviesParams,
+} from './types';
 
 export const apiHandler = {
   movie: {
@@ -12,5 +16,10 @@ export const apiHandler = {
         },
       });
     },
+
+    languages: () => getData<LanguageApi[]>(apiPath.movie.languages()),
+
+    primaryTranslation: () =>
+      getData<string[]>(apiPath.movie.primaryTranslation()),
   },
 };
