@@ -1,0 +1,42 @@
+.autocomplete-item {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.autocomplete-item:hover {
+  background-color: #f8f9fe;
+}
+
+.autocomplete-item:last-child {
+  border-bottom: none;
+}
+
+.autocomplete-poster {
+  width: 40px;
+  height: 60px;
+  background: #e1e5e9;
+  border-radius: 5px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.autocomplete-info h4 {
+  color: #333;
+  margin-bottom: 0.25rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.autocomplete-info p {
+  color: #666;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

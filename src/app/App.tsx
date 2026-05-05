@@ -1,7 +1,7 @@
-import { MoviePage } from '@/pages/movie';
+import { SearchMoviePage } from '@/pages';
 
 function App() {
-  return <MoviePage />;
+  return <SearchMoviePage />;
 }
 
 export default App;

@@ -1,32 +1,34 @@
-export const MoviePage = () => {
+import { LanguageSelector } from '@/features/movies/search/searchComponents/searchFiltersSection/languageSelector';
+import { MovieSearchInput } from '@/features/movies/search/searchComponents/searchInputSection/searchInput';
+import { ShortMovieCard } from '@/features/movies/search/searchComponents/searchInputSection/shortMovieCard';
+import { MoviesGrid } from '@/features/movies/search/searchComponents/searchResultSection/moviesGrid';
+import { CircleLoader, PageHeader } from '@/shared';
+
+export const SearchMoviePage = () => {
   return (
     <div className='container'>
       {/* <!-- Header Section --> */}
-      <header className='header'>
-        <h1>TMDB Movie Search</h1>
-        <p>Find your favorite movies with powerful search and autocomplete</p>
-      </header>
 
+      <PageHeader
+        title='TMDB Movie Search'
+        subtitle='Find your favorite movies with powerful search and autocomplete'
+      />
+
+      <MovieSearchInput />
       {/* <!-- Search Section --> */}
       <section className='search-section'>
         <div className='search-container'>
-          <input
-            type='text'
-            className='search-input'
-            placeholder='Search for movies...'
-            id='movieSearch'
-          />
+          <MovieSearchInput />
 
           {/* <!-- Autocomplete Dropdown - Connect to TMDB API for real-time suggestions --> */}
           <div className='autocomplete-dropdown' id='autocompleteDropdown'>
             {/* <!-- Example autocomplete items - replace with API data --> */}
-            <div className='autocomplete-item'>
-              <div className='autocomplete-poster'></div>
-              <div className='autocomplete-info'>
-                <h4>Example Movie Title</h4>
-                <p>2024 • Action, Adventure</p>
-              </div>
-            </div>
+            <ShortMovieCard
+              title='Example Movie Title'
+              year={11}
+              genres={['ddd']}
+            />
+
             {/* <!-- Add more autocomplete items here from API response --> */}
           </div>
         </div>
@@ -40,18 +42,8 @@ export const MoviePage = () => {
           <div className='filters-content' id='filtersContent'>
             <div className='filter-field'>
               <label className='filter-label'>Language</label>
-              <select className='filter-select' id='languageFilter'>
-                <option value='en-US'>English (US)</option>
-                <option value='en-GB'>English (UK)</option>
-                <option value='es-ES'>Spanish</option>
-                <option value='fr-FR'>French</option>
-                <option value='de-DE'>German</option>
-                <option value='it-IT'>Italian</option>
-                <option value='ja-JP'>Japanese</option>
-                <option value='ko-KR'>Korean</option>
-                <option value='zh-CN'>Chinese</option>
-                {/* <!-- TODO: Populate with all TMDB supported languages --> */}
-              </select>
+
+              <LanguageSelector />
             </div>
 
             <div className='filter-field'>
@@ -135,69 +127,15 @@ export const MoviePage = () => {
         </div>
 
         {/* <!-- Movies Grid - Populate with TMDB API data --> */}
-        <div className='movies-grid' id='moviesGrid'>
-          {/* <!-- Example Movie Cards - Replace with real data from TMDB API --> */}
-          <div className='movie-card'>
-            <div className='movie-poster'>
-              {/* <!-- Replace with: <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}"> --> */}
-              <div className='movie-rating'>8.5</div>
-            </div>
-            <div className='movie-info'>
-              <h3 className='movie-title'>Example Movie Title</h3>
-              <div className='movie-year'>2024</div>
-              <p className='movie-overview'>
-                This is an example movie overview that would come from the TMDB
-                API. Replace this with actual movie.overview from the API
-                response.
-              </p>
-              <div className='movie-genres'>
-                {/* <!-- Map through movie.genre_ids and show genre names --> */}
-                <span className='genre-tag'>Action</span>
-                <span className='genre-tag'>Adventure</span>
-                <span className='genre-tag'>Sci-Fi</span>
-              </div>
-            </div>
-          </div>
-
-          {/* <!-- Add more movie cards here programmatically --> */}
-        </div>
-
-        {/* <!-- Skeleton Loading - Show while loading --> */}
-        <div
-          className='skeleton-grid'
-          id='skeletonGrid'
-          // style="display: none;"
-        >
-          {/* <!-- Example skeleton cards - duplicate as needed --> */}
-          <div className='skeleton-card'>
-            <div className='skeleton-poster'></div>
-            <div className='skeleton-info'>
-              <div className='skeleton-line title'></div>
-              <div className='skeleton-line year'></div>
-              <div className='skeleton-line overview'></div>
-              <div className='skeleton-line overview'></div>
-              <div className='skeleton-line overview'></div>
-            </div>
-          </div>
-          {/* <!-- TODO: Add more skeleton cards programmatically based on expected results --> */}
-        </div>
+        <MoviesGrid movies={[]} />
 
         {/* <!-- Loading State - Show while API request is in progress --> */}
-        <div
-          className='loading'
-          id='loadingState'
-          // style="display: none;"
-        >
-          <div className='loading-spinner'></div>
+        <CircleLoader>
           <p>Searching for movies...</p>
-        </div>
+        </CircleLoader>
 
         {/* <!-- Empty State - Show when no results found --> */}
-        <div
-          className='empty-state'
-          id='emptyState'
-          // style="display: none;"
-        >
+        <div className='empty-state'>
           <h3>No movies found</h3>
           <p>Try searching with different keywords or check your spelling.</p>
         </div>
