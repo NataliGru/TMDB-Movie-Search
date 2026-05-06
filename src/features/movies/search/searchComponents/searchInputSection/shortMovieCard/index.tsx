@@ -1,4 +1,4 @@
-import { ImageWithFallback } from '@/shared';
+import { getPosterUrlWithBase, ImageWithFallback } from '@/shared';
 
 import type { MovieShort } from '../../../searchTypes';
 
@@ -12,10 +12,12 @@ export const ShortMovieCard = ({
   genres,
   posterUrl,
 }: SmallMovieCardProps) => {
+  const posterUrlWithBase = getPosterUrlWithBase(posterUrl);
+
   return (
     <div className='autocomplete-item'>
       <div className='autocomplete-poster'>
-        <ImageWithFallback src={posterUrl} alt={title} />
+        <ImageWithFallback src={posterUrlWithBase} alt={title} />
       </div>
 
       <div className='autocomplete-info'>

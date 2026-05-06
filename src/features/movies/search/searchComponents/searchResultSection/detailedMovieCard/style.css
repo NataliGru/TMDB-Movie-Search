@@ -20,17 +20,6 @@
   overflow: hidden;
 }
 
-/* Placeholder for movie poster image */
-.movie-poster::before {
-  content: '🎬';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 4rem;
-  opacity: 0.3;
-}
-
 .movie-rating {
   position: absolute;
   top: 10px;

@@ -1,33 +1,30 @@
-import { CircleLoader, ProgressLoader } from '@/shared';
+import { ProgressLoader } from '@/shared';
 
+import { useSearchMovieContext } from '../../../searchContext';
 import { MoviesGrid } from '../moviesGrid';
+import { MoviesGridSkeleton } from '../moviesGridSkeleton';
+import { SearchQueryEmpty } from '../searchQueryEmpty';
+import { SearchResultEmptyState } from '../searchResultEmptyState';
+import { SearchResultHeader } from '../searchResultHeader';
 
 export const SearchResults = () => {
+  const { movies, params, totalMovies, isLoading, isSuccess } =
+    useSearchMovieContext();
+
   return (
     <section className='results-section'>
-      {/* <!-- Progress Bar - Show during API requests --> */}
-      <ProgressLoader />
+      {isLoading && <ProgressLoader />}
 
-      <div className='results-header'>
-        <h2 className='results-title'>Search Results</h2>
-        <span className='results-count' id='resultsCount'>
-          0 movies found
-        </span>
-      </div>
+      <SearchResultHeader
+        moviesCount={totalMovies}
+        isQueryExist={!!params.query}
+      />
 
-      {/* <!-- Movies Grid - Populate with TMDB API data --> */}
-      <MoviesGrid movies={[]} />
+      {!params.query && <SearchQueryEmpty />}
 
-      {/* <!-- Loading State - Show while API request is in progress --> */}
-      <CircleLoader>
-        <p>Searching for movies...</p>
-      </CircleLoader>
+      {isLoading ? <MoviesGridSkeleton /> : <MoviesGrid />}
 
-      {/* <!-- Empty State - Show when no results found --> */}
-      <div className='empty-state'>
-        <h3>No movies found</h3>
-        <p>Try searching with different keywords or check your spelling.</p>
-      </div>
+      {isSuccess && !movies.length && <SearchResultEmptyState />}
     </section>
   );
 };

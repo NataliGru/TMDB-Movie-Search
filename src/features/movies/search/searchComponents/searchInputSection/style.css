@@ -1,0 +1,6 @@
+.search-container {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+  z-index: 10000;
+}

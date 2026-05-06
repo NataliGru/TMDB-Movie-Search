@@ -1,11 +1,11 @@
-import type { MovieApi } from '../../../searchApi';
+import { useSearchMovieContext } from '../../../searchContext';
 import { DetailedMovieCard } from '../detailedMovieCard';
 
-interface MoviesGridProps {
-  movies: MovieApi[];
-}
+import './style.css';
 
-export const MoviesGrid = ({ movies }: MoviesGridProps) => {
+export const MoviesGrid = () => {
+  const { movies, movieGenres } = useSearchMovieContext();
+
   if (!movies?.length) return;
 
   return (
@@ -19,6 +19,7 @@ export const MoviesGrid = ({ movies }: MoviesGridProps) => {
           overview={movie.overview}
           genres={movie.genre_ids}
           posterSrc={movie?.poster_path}
+          baseGenresList={movieGenres}
         />
       ))}
     </div>

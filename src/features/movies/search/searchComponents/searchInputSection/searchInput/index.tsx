@@ -1,18 +1,36 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import { useDebouncedValue } from '@/hooks';
+import {
+  SEARCH_MOVIE_PARAMS,
+  useSearchMovieContext,
+} from '../../../searchContext';
 
 import './style.css';
 
-export const MovieSearchInput = () => {
-  const [query, setQuery] = useState('');
+type MovieSearchInputProps = {
+  onFocus?: () => void;
+  onChange?: () => void;
+};
 
-  // const debouncedQuery = useDebouncedValue(query, 500);
-  useDebouncedValue(query, 500);
+export const MovieSearchInput = ({
+  onChange,
+  onFocus,
+}: MovieSearchInputProps) => {
+  const { updateParam } = useSearchMovieContext();
+
+  const [query, setQuery] = useState('');
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement, HTMLInputElement>,
-  ) => setQuery(e.target.value);
+  ) => {
+    setQuery(e.target.value);
+    onChange?.();
+  };
+
+  useEffect(() => {
+    updateParam(SEARCH_MOVIE_PARAMS.query, query);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query]);
 
   return (
     <div>
@@ -21,6 +39,7 @@ export const MovieSearchInput = () => {
         className='search-input'
         value={query}
         onChange={handleInputChange}
+        onFocus={onFocus}
         placeholder='Search for movies...'
       />
     </div>

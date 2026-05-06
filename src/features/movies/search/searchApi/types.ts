@@ -22,12 +22,12 @@ export interface MoviesSearchResponseApi {
   total_results: number;
 }
 
-export interface SearchMoviesParams {
+export interface SearchMoviesParamsApi {
   query: string;
-  includeAdult?: boolean;
+  include_adult?: boolean;
   language?: string;
-  primaryReleaseYear?: string;
-  page?: number;
+  primary_release_year?: string;
+  page: string;
   region?: string;
   year?: string;
 }
@@ -36,4 +36,15 @@ export interface LanguageApi {
   iso_639_1: string;
   english_name: string;
   name: string;
+}
+
+export interface GenreApi {
+  id: number;
+  name: string;
+}
+
+export interface CountriesApi {
+  iso_3166_1: string;
+  english_name: string;
+  native_name: string;
 }

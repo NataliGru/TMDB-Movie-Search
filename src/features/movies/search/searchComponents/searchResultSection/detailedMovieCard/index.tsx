@@ -1,4 +1,11 @@
-import { ImageWithFallback } from '@/shared';
+import {
+  getGenreNameFromId,
+  getPosterUrlWithBase,
+  ImageWithFallback,
+} from '@/shared';
+
+import type { Genre } from '../../../searchContext';
+import { GenreList } from '../genreList';
 
 import './style.css';
 
@@ -9,6 +16,7 @@ interface DetailedMovieCardProps {
   overview: string;
   genres: number[];
   posterSrc?: string;
+  baseGenresList: Genre[];
 }
 
 export const DetailedMovieCard = ({
@@ -18,19 +26,16 @@ export const DetailedMovieCard = ({
   overview,
   genres,
   posterSrc,
+  baseGenresList,
 }: DetailedMovieCardProps) => {
-  const moviePosterSrc = posterSrc
-    ? `${import.meta.env.VITE_API_TOKEN}${posterSrc}`
-    : undefined;
+  const posterUrlWithBase = getPosterUrlWithBase(posterSrc);
 
-  const roundedRate = rate.toFixed(2);
-
-  console.log(genres);
+  const roundedRate = rate.toFixed(1);
 
   return (
     <div className='movie-card'>
       <div className='movie-poster'>
-        <ImageWithFallback src={moviePosterSrc} alt={title} />
+        <ImageWithFallback src={posterUrlWithBase} alt={title} />
 
         <div className='movie-rating'>{roundedRate}</div>
       </div>
@@ -42,7 +47,11 @@ export const DetailedMovieCard = ({
 
         <p className='movie-overview'>{overview}</p>
 
-        {/* <GenreList genreList={genres} /> */}
+        <GenreList
+          genreList={genres.map((genreId) =>
+            getGenreNameFromId(genreId, baseGenresList),
+          )}
+        />
       </div>
     </div>
   );

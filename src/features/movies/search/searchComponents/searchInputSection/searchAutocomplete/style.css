@@ -4,6 +4,7 @@
   top: 100%;
   left: 0;
   right: 0;
+  padding: 8px;
   background: white;
   border-radius: 15px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
@@ -12,4 +13,12 @@
   z-index: 10002;
   margin-top: 0.5rem;
   border: 1px solid rgba(118, 75, 162, 0.2);
+}
+
+.autocomplete-loader {
+  min-height: 32px;
+  padding: 0.5rem;
+  color: #666;
+  font-size: 0.875rem;
+  text-align: center;
 }
