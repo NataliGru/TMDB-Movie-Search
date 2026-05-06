@@ -89,7 +89,7 @@ export const SearchParamNumberField = ({
     if (inputValue === params[paramKey]) return;
 
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    setInputValue(params[paramKey]);
+    setInputValue(params[paramKey] ?? '');
     // eslint-disable-next-line
   }, [shouldResetOnParamChange, params, paramKey]);
 

@@ -16,9 +16,9 @@ export const MovieSearchInput = ({
   onChange,
   onFocus,
 }: MovieSearchInputProps) => {
-  const { updateParam } = useSearchMovieContext();
+  const { params, updateParam } = useSearchMovieContext();
 
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState(params.query);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement, HTMLInputElement>,
@@ -28,9 +28,18 @@ export const MovieSearchInput = ({
   };
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setQuery(params.query);
+  }, [params.query]);
+
+  useEffect(() => {
+    if (query === params.query) {
+      return;
+    }
+
     updateParam(SEARCH_MOVIE_PARAMS.query, query);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query]);
+  }, [query, params.query]);
 
   return (
     <div>
