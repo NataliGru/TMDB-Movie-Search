@@ -52,7 +52,7 @@ export const SearchAutocomplete = () => {
           key={`${movie.title}-${movie.original_title}-${movie.release_date}`}
           title={movie.title}
           posterUrl={movie.poster_path}
-          year={movie.release_date}
+          date={movie.release_date}
           genres={movie.genre_ids.map((genreId) =>
             getGenreNameFromId(genreId, movieGenres),
           )}

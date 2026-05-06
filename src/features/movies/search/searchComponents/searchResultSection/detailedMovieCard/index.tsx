@@ -1,6 +1,7 @@
 import {
   getGenreNameFromId,
   getPosterUrlWithBase,
+  getYearFromDate,
   ImageWithFallback,
 } from '@/shared';
 
@@ -12,7 +13,7 @@ import './style.css';
 interface DetailedMovieCardProps {
   title: string;
   rate: number;
-  year: string;
+  date: string;
   overview: string;
   genres: number[];
   posterSrc?: string;
@@ -22,7 +23,7 @@ interface DetailedMovieCardProps {
 export const DetailedMovieCard = ({
   title,
   rate,
-  year,
+  date,
   overview,
   genres,
   posterSrc,
@@ -43,7 +44,7 @@ export const DetailedMovieCard = ({
       <div className='movie-info'>
         <h3 className='movie-title'>{title}</h3>
 
-        <div className='movie-year'>{year}</div>
+        <div className='movie-year'>{getYearFromDate(date)}</div>
 
         <p className='movie-overview'>{overview}</p>
 

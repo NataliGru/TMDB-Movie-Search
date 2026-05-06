@@ -1,4 +1,8 @@
-import { getPosterUrlWithBase, ImageWithFallback } from '@/shared';
+import {
+  getPosterUrlWithBase,
+  getYearFromDate,
+  ImageWithFallback,
+} from '@/shared';
 
 import type { MovieShort } from '../../../searchTypes';
 
@@ -8,7 +12,7 @@ type SmallMovieCardProps = MovieShort;
 
 export const ShortMovieCard = ({
   title,
-  year,
+  date,
   genres,
   posterUrl,
 }: SmallMovieCardProps) => {
@@ -23,7 +27,7 @@ export const ShortMovieCard = ({
       <div className='autocomplete-info'>
         <h4>{title}</h4>
         <p>
-          {year} • {!!genres?.length && genres.join(', ')}
+          {getYearFromDate(date)} • {!!genres?.length && genres.join(', ')}
         </p>
       </div>
     </div>

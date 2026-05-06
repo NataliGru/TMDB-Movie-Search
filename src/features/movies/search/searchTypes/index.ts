@@ -1,6 +1,6 @@
 export interface MovieShort {
   title: string;
-  year: string;
+  date: string;
   genres: string[];
   posterUrl?: string;
 }
