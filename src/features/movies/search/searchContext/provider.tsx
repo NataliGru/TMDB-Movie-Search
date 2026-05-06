@@ -2,7 +2,7 @@ import { type ReactNode, useEffect, useMemo, useState } from 'react';
 
 import { useDebouncedValue } from '@/hooks';
 
-import { useGetMoviesByParamsInfinite } from '../searchApi';
+import { type MovieApi, useGetMoviesByParamsInfinite } from '../searchApi';
 import { useGeMovieGenres } from '../searchApi/queries/useGetGenres';
 
 import { FIRST_SEARCH_MOVIE_PAGE, SEARCH_MOVIE_PARAMS } from './constants';
@@ -19,6 +19,14 @@ export const SearchMovieProvider = ({ children }: SearchMovieProviderProps) => {
     getMovieParamsFromUrl,
   );
   const [shouldClearMovies, setShouldClearMovies] = useState(false);
+
+  const [selectedMovie, setSelectedMovie] = useState<MovieApi | null>(null);
+
+  const handleSelectMovie = (movie: MovieApi) => {
+    setSelectedMovie(movie);
+  };
+
+  const handleRemoveSelectedMovie = () => setSelectedMovie(null);
 
   const { debouncedValue: debouncedParams, isDebouncing } = useDebouncedValue(
     params,
@@ -139,6 +147,10 @@ export const SearchMovieProvider = ({ children }: SearchMovieProviderProps) => {
         movieGenres: movieGenres?.genres ?? [],
         isMovieGenresError,
         movieGenresError,
+
+        selectedMovie,
+        handleSelectMovie,
+        handleRemoveSelectedMovie,
       }}
     >
       {children}

@@ -4,7 +4,7 @@ import { DetailedMovieCard } from '../detailedMovieCard';
 import './style.css';
 
 export const MoviesGrid = () => {
-  const { movies, movieGenres } = useSearchMovieContext();
+  const { movies, movieGenres, handleSelectMovie } = useSearchMovieContext();
 
   if (!movies?.length) return;
 
@@ -20,6 +20,7 @@ export const MoviesGrid = () => {
           genres={movie.genre_ids}
           posterSrc={movie?.poster_path}
           baseGenresList={movieGenres}
+          onClick={() => handleSelectMovie(movie)}
         />
       ))}
     </div>

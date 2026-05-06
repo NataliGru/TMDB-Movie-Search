@@ -28,6 +28,10 @@ export type SearchMovieContextValue = {
   movieGenres: Genre[];
   isMovieGenresError: boolean;
   movieGenresError: Error | null;
+
+  selectedMovie: MovieApi;
+  handleSelectMovie: (movie: MovieApi) => void;
+  handleRemoveSelectedMovie: () => void;
 };
 
 export const SearchMovieContext = createContext<SearchMovieContextValue | null>(

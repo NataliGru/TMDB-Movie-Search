@@ -1,4 +1,5 @@
 import { SearchFilterSection, SearchInputSection } from '@/features';
+import { MovieDetailsPortal } from '@/features/movies/search/searchComponents/detailsPortal';
 import { SearchResults } from '@/features/movies/search/searchComponents/searchResultSection/searchResults';
 import { PageHeader } from '@/shared';
 
@@ -17,6 +18,8 @@ export const SearchMoviePage = () => {
       </section>
 
       <SearchResults />
+
+      <MovieDetailsPortal />
     </div>
   );
 };

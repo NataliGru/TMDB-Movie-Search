@@ -18,6 +18,7 @@ interface DetailedMovieCardProps {
   genres: number[];
   posterSrc?: string;
   baseGenresList: Genre[];
+  onClick?: () => void;
 }
 
 export const DetailedMovieCard = ({
@@ -28,13 +29,14 @@ export const DetailedMovieCard = ({
   genres,
   posterSrc,
   baseGenresList,
+  onClick,
 }: DetailedMovieCardProps) => {
   const posterUrlWithBase = getPosterUrlWithBase(posterSrc);
 
   const roundedRate = rate.toFixed(1);
 
   return (
-    <div className='movie-card'>
+    <div className='movie-card' onClick={onClick}>
       <div className='movie-poster'>
         <ImageWithFallback src={posterUrlWithBase} alt={title} />
 

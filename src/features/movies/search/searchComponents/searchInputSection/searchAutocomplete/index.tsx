@@ -21,6 +21,7 @@ export const SearchAutocomplete = () => {
     isSuccess,
     isError,
     error,
+    handleSelectMovie,
   } = useSearchMovieContext();
 
   const errorMessage = isError
@@ -56,6 +57,7 @@ export const SearchAutocomplete = () => {
           genres={movie.genre_ids.map((genreId) =>
             getGenreNameFromId(genreId, movieGenres),
           )}
+          onClick={() => handleSelectMovie(movie)}
         />
       ))}
 

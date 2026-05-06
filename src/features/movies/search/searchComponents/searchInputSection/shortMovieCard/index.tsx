@@ -8,18 +8,19 @@ import type { MovieShort } from '../../../searchTypes';
 
 import './style.css';
 
-type SmallMovieCardProps = MovieShort;
+type SmallMovieCardProps = MovieShort & { onClick?: () => void };
 
 export const ShortMovieCard = ({
   title,
   date,
   genres,
   posterUrl,
+  onClick,
 }: SmallMovieCardProps) => {
   const posterUrlWithBase = getPosterUrlWithBase(posterUrl);
 
   return (
-    <div className='autocomplete-item'>
+    <div className='autocomplete-item' onClick={onClick}>
       <div className='autocomplete-poster'>
         <ImageWithFallback src={posterUrlWithBase} alt={title} />
       </div>
