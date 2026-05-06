@@ -19,6 +19,7 @@ export type SearchMovieContextValue = {
   isError: boolean;
   isSuccess: boolean;
   error: Error | null;
+  isDebouncing: boolean;
 
   fetchNextPage: () => void;
   hasNextPage: boolean;

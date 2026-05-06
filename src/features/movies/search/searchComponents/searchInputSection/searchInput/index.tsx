@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+import { ProgressLoader } from '@/shared';
+
 import {
   SEARCH_MOVIE_PARAMS,
   useSearchMovieContext,
@@ -16,7 +18,7 @@ export const MovieSearchInput = ({
   onChange,
   onFocus,
 }: MovieSearchInputProps) => {
-  const { params, updateParam } = useSearchMovieContext();
+  const { params, isDebouncing, updateParam } = useSearchMovieContext();
 
   const [query, setQuery] = useState(params.query);
 
@@ -51,6 +53,7 @@ export const MovieSearchInput = ({
         onFocus={onFocus}
         placeholder='Search for movies...'
       />
+      {isDebouncing && params.query.trim() && <ProgressLoader />}
     </div>
   );
 };

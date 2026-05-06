@@ -20,7 +20,10 @@ export const SearchMovieProvider = ({ children }: SearchMovieProviderProps) => {
   );
   const [shouldClearMovies, setShouldClearMovies] = useState(false);
 
-  const debouncedParams = useDebouncedValue(params, 500);
+  const { debouncedValue: debouncedParams, isDebouncing } = useDebouncedValue(
+    params,
+    500,
+  );
 
   const updateParam = <K extends keyof SearchMoviesParams>(
     key: K,
@@ -118,6 +121,7 @@ export const SearchMovieProvider = ({ children }: SearchMovieProviderProps) => {
       value={{
         params,
         updateParam,
+        isDebouncing,
 
         movies,
         clearMovies,
