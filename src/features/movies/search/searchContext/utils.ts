@@ -6,7 +6,7 @@ import type { SearchMoviesParams } from './types';
 export const getMovieParamsFromUrl = (): SearchMoviesParams => {
   return {
     query: getUrlParam(SEARCH_MOVIE_PARAMS.query),
-    include_adult: getBooleanUrlParam(SEARCH_MOVIE_PARAMS.includeAdult),
+    include_adult: getBooleanUrlParam(SEARCH_MOVIE_PARAMS.includeAdult, false),
     language: getUrlParam(SEARCH_MOVIE_PARAMS.language, ''),
     primary_release_year: getUrlParam(SEARCH_MOVIE_PARAMS.primaryReleaseYear),
     region: getUrlParam(SEARCH_MOVIE_PARAMS.region),

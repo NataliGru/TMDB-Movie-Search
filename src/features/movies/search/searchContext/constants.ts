@@ -14,7 +14,7 @@ export const FIRST_SEARCH_MOVIE_PAGE = '1';
 
 export const DEFAULT_SEARCH_MOVIE_PARAMS: SearchMoviesParams = {
   query: '',
-  include_adult: undefined,
+  include_adult: false,
   language: '',
   primary_release_year: '',
   region: '',

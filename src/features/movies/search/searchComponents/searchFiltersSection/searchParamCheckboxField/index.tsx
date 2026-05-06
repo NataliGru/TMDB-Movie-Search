@@ -27,7 +27,7 @@ export const SearchParamCheckboxField = ({
           onChange={(event) =>
             updateParam(
               SEARCH_MOVIE_PARAMS.includeAdult,
-              event.target.checked || undefined,
+              event.target.checked || false,
             )
           }
         />
