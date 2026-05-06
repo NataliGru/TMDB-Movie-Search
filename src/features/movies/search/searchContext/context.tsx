@@ -29,7 +29,7 @@ export type SearchMovieContextValue = {
   isMovieGenresError: boolean;
   movieGenresError: Error | null;
 
-  selectedMovie: MovieApi;
+  selectedMovie: MovieApi | null;
   handleSelectMovie: (movie: MovieApi) => void;
   handleRemoveSelectedMovie: () => void;
 };
